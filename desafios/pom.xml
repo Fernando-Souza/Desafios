@@ -6,7 +6,8 @@
   <packaging>pom</packaging>
   <modules>
     <module>classes-iphone</module>
-    <module>controlefluxo</module>    
+    <module>controlefluxo</module>
+    <module>banco-digital</module>    
   </modules>
   <properties>
     <maven.compiler.source>1.21</maven.compiler.source>
