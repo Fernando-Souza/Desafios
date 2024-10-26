@@ -1,25 +1,33 @@
 package com.dio.entidades;
 
-  
+import java.util.InputMismatchException;
+
 public abstract class Conta implements IConta {
 	
-	private static final int AGENCIA_PADRAO = 1;
+	//private static final int AGENCIA_PADRAO = 1;
 	private static int SEQUENCIAL = 1;
 
-	protected int agencia;
+	protected Agencia agencia;
 	protected int numero;
 	protected double saldo;
 	protected Cliente cliente;
+	private TipoConta tipoConta;
 
-	public Conta(Cliente cliente) {
-		this.agencia = Conta.AGENCIA_PADRAO;
+	public Conta(Cliente cliente, TipoConta tipoConta) {		
 		this.numero = SEQUENCIAL++;
 		this.cliente = cliente;
+		this.tipoConta = tipoConta;
 	}
 
 	@Override
 	public void sacar(double valor) {
+
+		if(saldo > valor){
 		saldo -= valor;
+		}
+		else{
+			throw new InputMismatchException( "Saldo Insuficiente!");
+		}
 	}
 
 	@Override
@@ -33,7 +41,7 @@ public abstract class Conta implements IConta {
 		contaDestino.depositar(valor);
 	}
 
-	public int getAgencia() {
+	public Agencia getAgencia() {
 		return agencia;
 	}
 
@@ -43,6 +51,20 @@ public abstract class Conta implements IConta {
 
 	public double getSaldo() {
 		return saldo;
+	}
+
+	
+
+	public TipoConta getTipoConta() {
+		return tipoConta;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	protected void imprimirInfosComuns() {

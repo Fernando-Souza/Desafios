@@ -1,11 +1,20 @@
 package com.dio.entidades;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Banco {
 
 	private String nome;
-	private List<Conta> contas;
+	private Map<Integer,Agencia> agencias;
+
+	
+
+	public Banco(String nome){
+          
+		this.agencias=new HashMap<>();
+		
+	}
 
 	public String getNome() {
 		return nome;
@@ -15,12 +24,26 @@ public class Banco {
 		this.nome = nome;
 	}
 
-	public List<Conta> getContas() {
-		return contas;
+	public Map<Integer,Agencia> listAgencias() {
+		return agencias;
 	}
 
-	public void setContas(List<Conta> contas) {
-		this.contas = contas;
+	
+	public Agencia createAgencia(int numero){
+
+		Agencia agencia = new Agencia(numero);
+
+		agencias.put(numero, agencia);
+
+		return agencia;
+
 	}
+
+	public Agencia buscaAgencia (int numero){
+
+		return agencias.get(numero);
+	}
+
+	
 
 }
