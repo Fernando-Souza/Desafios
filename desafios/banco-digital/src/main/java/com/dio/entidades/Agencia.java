@@ -15,6 +15,7 @@ public class Agencia {
 
         this.numero=numero;
         this.contas= new ArrayList<>();
+        this.clientes= new ArrayList<>();
     }
 
     public int getNumero() {
@@ -47,21 +48,26 @@ public class Agencia {
         
     }
 
-    public void addCliente(Cliente cliente) {
+    private void addCliente(Cliente cliente) {
         this.clientes.add(cliente);
     }
 
 
-    public void createContaCorrente(Cliente cliente){
+    public IConta createContaCorrente(Cliente cliente,double depositoInicial){
 
-        contas.add(new ContaCorrente(cliente));
+        ContaCorrente cc = new ContaCorrente(cliente,depositoInicial);
+        cc.setAgencia(this);
+        contas.add(cc);
         addCliente(cliente);
+        return cc;
     }
 
-    public void createContaPoupanca(Cliente cliente){
-
-        contas.add(new ContaPoupanca(cliente));
+    public IConta createContaPoupanca(Cliente cliente,double depositoInicial){
+        ContaPoupanca cp = new ContaPoupanca(cliente,depositoInicial);
+        cp.setAgencia(this);
+        contas.add(cp);
         addCliente(cliente);
+        return cp;
     }
 
 

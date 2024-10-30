@@ -3,8 +3,8 @@ package com.dio.entidades;
 
 public class ContaCorrente extends Conta {
 
-	public ContaCorrente(Cliente cliente) {
-		super(cliente);
+	public ContaCorrente(Cliente cliente,double depositoInicial) {
+		super(cliente, TipoConta.CONTA_CORRENTE,depositoInicial);
 	}
 
 	@Override

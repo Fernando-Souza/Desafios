@@ -3,8 +3,8 @@ package com.dio.entidades;
 import java.util.InputMismatchException;
 
 public abstract class Conta implements IConta {
-	
-	//private static final int AGENCIA_PADRAO = 1;
+
+	// private static final int AGENCIA_PADRAO = 1;
 	private static int SEQUENCIAL = 1;
 
 	protected Agencia agencia;
@@ -13,36 +13,49 @@ public abstract class Conta implements IConta {
 	protected Cliente cliente;
 	private TipoConta tipoConta;
 
-	public Conta(Cliente cliente, TipoConta tipoConta) {		
+	public Conta(Cliente cliente, TipoConta tipoConta, double depositoInicial) {
 		this.numero = SEQUENCIAL++;
 		this.cliente = cliente;
 		this.tipoConta = tipoConta;
+		this.saldo = depositoInicial;
 	}
 
 	@Override
-	public void sacar(double valor) {
+	public void sacar(double valor) throws SaldoInsuficienteException {
 
-		if(saldo > valor){
-		saldo -= valor;
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+
+		} else {
+			
+			throw new SaldoInsuficienteException(valor);
+
 		}
-		else{
-			throw new InputMismatchException( "Saldo Insuficiente!");
-		}
+
 	}
 
 	@Override
 	public void depositar(double valor) {
-		saldo += valor;
+		this.saldo += valor;
+
 	}
 
 	@Override
-	public void transferir(double valor, IConta contaDestino) {
-		this.sacar(valor);
-		contaDestino.depositar(valor);
+	public void transferir(double valor, IConta contaDestino) throws SaldoInsuficienteException {
+		
+			this.sacar(valor);
+			contaDestino.depositar(valor);
+		
+		
+		
 	}
 
 	public Agencia getAgencia() {
 		return agencia;
+	}
+
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
 	}
 
 	public int getNumero() {
@@ -52,8 +65,6 @@ public abstract class Conta implements IConta {
 	public double getSaldo() {
 		return saldo;
 	}
-
-	
 
 	public TipoConta getTipoConta() {
 		return tipoConta;
@@ -69,7 +80,7 @@ public abstract class Conta implements IConta {
 
 	protected void imprimirInfosComuns() {
 		System.out.println(String.format("Titular: %s", this.cliente.getNome()));
-		System.out.println(String.format("Agencia: %d", this.agencia));
+		System.out.println(String.format("Agencia: %d", this.agencia.getNumero()));
 		System.out.println(String.format("Numero: %d", this.numero));
 		System.out.println(String.format("Saldo: %.2f", this.saldo));
 	}
