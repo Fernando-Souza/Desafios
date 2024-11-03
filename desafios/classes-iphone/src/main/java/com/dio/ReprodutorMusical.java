@@ -5,8 +5,6 @@ package com.dio;
 public class ReprodutorMusical extends Iphone {
 
     private String faixaSelecionada = "";
-    private Boolean isPlayingMusic = false;
-
     public void tocar() {
         if (!faixaSelecionada.isEmpty()) {
             System.out.println("Tocando a música " + this.faixaSelecionada);

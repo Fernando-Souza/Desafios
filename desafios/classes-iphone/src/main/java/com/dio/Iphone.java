@@ -8,9 +8,6 @@ import com.dio.interfaces.Telefone;
  */
 public class Iphone implements Telefone {
 
-    private boolean isTurnOn;
-
-    
     public boolean isBateryFull() {
 
         
@@ -35,16 +32,12 @@ public class Iphone implements Telefone {
 
     
     public void turnOn() {
-        
-        isTurnOn=true;
 
         
     }
 
     
     public void turnOff() {
-      
-        isTurnOn=false;
         
     }
 }
