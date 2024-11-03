@@ -1,7 +1,5 @@
 package com.dio.entidades;
 
-import java.util.InputMismatchException;
-
 public abstract class Conta implements IConta {
 
 	// private static final int AGENCIA_PADRAO = 1;
