@@ -7,11 +7,15 @@
   <modules>
     <module>classes-iphone</module>
     <module>controlefluxo</module>
-    <module>banco-digital</module>    
+    <module>banco-digital</module>
+    <module>desafio-poo-dio</module>
+    <module>conexao</module>
+    <module>quedaconexao</module>
+    <module>dadosmoveis</module>    
   </modules>
   <properties>
-    <maven.compiler.source>1.21</maven.compiler.source>
-    <maven.compiler.target>1.21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.6.0</junit.version>    
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>   

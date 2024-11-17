@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.dio</groupId>
-    <artifactId>classes-iphone</artifactId>
+    <artifactId>dadosmoveis</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     
